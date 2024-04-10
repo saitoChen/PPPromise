@@ -5,11 +5,16 @@
  */
 const PromiseA = require('./Promise/PromiseA')
 
-new PromiseA((resolve, reject) => {
+let promise = new PromiseA((resolve, reject) => {
+  setTimeout(() => {
     resolve("数据")
-  })
-  .then((data) => {
-    console.log('data ->', data)
-  }, (err) => {
-    console.log('err ->', err)
-  })
+  }, 2000)
+})
+
+promise.then(data => {
+  console.log('data1 ->', data)
+})
+
+promise.then(data => {
+  console.log('data1 ->', data)
+})
